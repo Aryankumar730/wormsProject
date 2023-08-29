@@ -1,5 +1,7 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Vertical_Nav from '@/components/Vertical_Nav';
+import Horizontal_Nav from '@/components/Horizontal_Nav';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <section className='flex flex-row flex-auto inter.className relative'>
+        <nav className='h-screen fixed z-[5]'>
+          <Vertical_Nav />
+        </nav>
+
+        <div>
+          <nav className='fixed w-screen'>
+            <Horizontal_Nav />
+          </nav>
+          <section>
+            {children}
+
+          </section>
+        </div>
+      </section>
     </html>
   )
 }
